@@ -21,6 +21,7 @@ export function fetchCountries(name) {
       return response.json();
     })
     .then(data => {
+      if (data.length === 0) { countryInfo.innerHTML = ''; countryList.innerHTML = '' };
       if (data.length === 1) oneCountry(data);
       if (data.length >= 2 && data.length <= 10) flagAndCountry(data);
       if (data.length > 10) tooLongAnswerAlert(data);
@@ -33,6 +34,8 @@ export function fetchCountries(name) {
 }
 
 function tooLongAnswerAlert() {
+  countryList.innerHTML = '';
+  countryInfo.innerHTML = '';
   return Notiflix.Notify.info(
     'Too many matches found. Please enter a more specific name.'
   );
