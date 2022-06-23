@@ -1,4 +1,4 @@
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import Notiflix from 'notiflix';
 
 const countryInfo = document.querySelector('.country-info');
 
@@ -11,7 +11,7 @@ export function fetchCountries(name) {
         console.log(response);
         //throw new Error(response.status);
         if (response.status == '404') {
-          Notify.failure('Oops, there is no country with that name');
+          Notiflix.Notify.failure('Oops, there is no country with that name');
           countryInfo.innerHTML = '';
         }
       }
@@ -30,19 +30,21 @@ export function fetchCountries(name) {
 }
 
 function tooLongAnswerAlert() {
-  return Notify.info(
+  return Notiflix.Notify.info(
     'Too many matches found. Please enter a more specific name.'
   );
 }
 
 function flagAndCountry(data) {
-  const markUpSeveral = data.map(
-    e =>
-      `<span class="flag" style="background-image: url(${e.flags.svg});
+  const markUpSeveral = data
+    .map(
+      e =>
+        `<span class="flag" style="background-image: url(${e.flags.svg});
        width: 30px; height: 20px; display:block;
         background-position: contain; background-size: 30px 20px;
         outline: 1px solid black;"></span><p>${e.name}</p>`
-  ).join('');
+    )
+    .join('');
   console.log(markUpSeveral);
   return (countryInfo.innerHTML = markUpSeveral);
 }
@@ -53,15 +55,13 @@ function oneCountry(data) {
       e =>
         `
         <span class="flag" style="background-image: url(${e.flags.svg});
-       width: 60px; height: 40px; display:block;
+        width: 60px; height: 40px; display:block;
         background-position: contain; background-size: 60px 40px;
         outline: 1px solid black;"></span>
         <h2>${e.name}</h2>
         <p>Capital: ${e.capital}</p>
         <p>Population: ${e.population}</p>
-        <p>Languages: ${e.languages.map(
-          element => element.name
-          )}</p>`
+        <p>Languages: ${e.languages.map(element => element.name)}</p>`
     )
     .join('');
   return (countryInfo.innerHTML = markUp);
