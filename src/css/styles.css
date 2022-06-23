@@ -19,3 +19,25 @@ body {
   margin-bottom: 16px;
 }
 
+.country-list{
+  list-style: circle;
+}
+
+.country-list > .countryList-item{
+  display: flex;
+  align-items: center;
+}
+
+.countryList-item :not(:last-child){
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.onlyCountryName{
+  font-size: 40px;
+  font-style: bold;
+}
+
+.onlyCountryInfo{
+  font-size: 25px;
+}
