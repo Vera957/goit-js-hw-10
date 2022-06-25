@@ -11,7 +11,7 @@ const inputSearch = document.querySelector('#search-box');
 inputSearch.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY));
 
 function onInput(e) {
-  //e.preventDefault();
+  e.preventDefault();
   const val = e.target.value;
   fetchCountries(val);
 }
