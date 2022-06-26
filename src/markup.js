@@ -1,7 +1,7 @@
 import Notiflix from 'notiflix';
 
 export const returnOneCountry = ([data]) => {
-  console.log(data.length, 'returnOneCountry');
+  console.log([data].length, 'returnOneCountry');
   return `<span class="flag" style="background-image: url(${
     data.flags.svg
   });
@@ -39,3 +39,4 @@ export function tooLongAnswerAlert(data) {
        'Too many matches found. Please enter a more specific name.'
      );
 }
+
