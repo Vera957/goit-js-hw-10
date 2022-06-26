@@ -25,7 +25,7 @@ function onInput(e) {
   fetchCountries(val)
     .then(data => {
       clearMarkUp();
-
+      if (data == undefined) return;
       if (data.length == 1) {
         ci.innerHTML = returnOneCountry(data);
       }
